@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+$VERBOSE = nil
+
+require File.dirname(__FILE__) + '/../lib/scheme'
+puts Scheme.run(File.expand_path ARGV[0])
+

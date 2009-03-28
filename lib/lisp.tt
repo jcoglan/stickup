@@ -1,0 +1,26 @@
+grammar Lisp
+  rule program
+    cell* <Program>
+  end
+  
+  rule cell
+    space* datum space* <Cell>
+  end
+  
+  rule datum
+    boolean / integer
+  end
+  
+  rule boolean
+    ("#t" / "#f") <Boolean>
+  end
+  
+  rule integer
+    ("0" / [1-9] [0-9]*) <Integer>
+  end
+  
+  rule space
+    [\s\n\r\t]
+  end
+end
+
