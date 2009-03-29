@@ -7,15 +7,19 @@ module Lisp
   
   class List < Treetop::Runtime::SyntaxNode
     def eval(scope)
-      cells = elements[1].elements
       func = cells.first.eval(scope)
-      args = cells[1..-1].map { |c| c.eval(scope) }
-      func.call(*args)
+      args = cells[1..-1]
+      func.call(scope, args)
+    end
+    
+    def cells
+      elements[1].elements.map { |c| c.data }
     end
   end
   
   class Cell < Treetop::Runtime::SyntaxNode
-    def eval(scope); elements[1].eval(scope); end
+    def eval(scope); data.eval(scope); end
+    def data; elements[1]; end
   end
   
   module Boolean
