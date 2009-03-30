@@ -1,5 +1,3 @@
-require 'forwardable'
-
 class Scope
   def initialize(parent = nil)
     @parent = parent || {}
