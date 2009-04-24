@@ -1,35 +1,5 @@
 grammar Lisp
-  rule program
-    cell* <Program>
-  end
   
-  rule cell
-    space* (list / atom) space* <Cell>
-  end
-  
-  rule list
-    "(" cell* ")" <List>
-  end
-  
-  rule atom
-    datum / identifier
-  end
-  
-  rule datum
-    boolean / integer
-  end
-  
-  rule boolean
-    ("#t" / "#f") <Boolean>
-  end
-  
-  rule integer
-    ("0" / [1-9] [0-9]*) <Integer>
-  end
-  
-  rule identifier
-    (!delimiter .)+ <Identifier>
-  end
   
   rule space
     [\s\n\r\t]
